@@ -3,19 +3,19 @@ import React, { Component } from 'react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { Panel } from 'react-bootstrap';
 
-class LanguajeChart extends Component {
+class LanguageChart extends Component {
 
   render() {
 
-    let languajeData = { };
+    let languageData = { };
 
     this.props.repos.map( repo => {
 
-        if(!languajeData[repo.language])
-          languajeData[repo.language] = { totalRepos : 0 , totalWatchers : 0 };
+        if(!languageData[repo.language])
+          languageData[repo.language] = { totalRepos : 0 , totalWatchers : 0 };
 
-        languajeData[repo.language].totalRepos++;
-        languajeData[repo.language].totalWatchers += repo.watchers;
+        languageData[repo.language].totalRepos++;
+        languageData[repo.language].totalWatchers += repo.watchers;
 
         return repo;
 
@@ -23,8 +23,8 @@ class LanguajeChart extends Component {
 
     let data = [];
 
-    Object.keys(languajeData).forEach((key) => {
-      data.push({name: key, 'Total Repos': languajeData[key].totalRepos, 'Total Watchers' : languajeData[key].totalWatchers / 1000 })
+    Object.keys(languageData).forEach((key) => {
+      data.push({name: key, 'Total Repos': languageData[key].totalRepos, 'Total Watchers' : languageData[key].totalWatchers / 1000 })
     });
 
     data = data.sort((a, b) => { return b['Total Repos'] - a['Total Repos'] });
@@ -33,7 +33,7 @@ class LanguajeChart extends Component {
       <Panel>
 
         <Panel.Heading>
-          <Panel.Title componentClass="h3">Languaje Repos & Languaje Watchers</Panel.Title>
+          <Panel.Title componentClass="h3">Language Repos & Language Watchers</Panel.Title>
         </Panel.Heading>
 
         <Panel.Body>
@@ -57,4 +57,4 @@ class LanguajeChart extends Component {
   }
 }
 
-export default LanguajeChart;
+export default LanguageChart;

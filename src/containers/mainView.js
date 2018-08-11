@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, ListGroupItem, Image, ListGroup } from 'react-bootstrap';
 
 import { closeDetailRepo, LOADING_REPO } from '../actions/detailRepoActions';
-import LanguajeChart from '../components/languajeChart';
+import LanguageChart from '../components/languageChart';
 import ForksVsWatchersChart from '../components/forksVsWatchersChart';
 
 
@@ -48,7 +48,7 @@ class MainView extends Component {
                 <p> Full Name : { this.props.detailRepo.full_name } </p>
                 <p> URL : { this.props.detailRepo.html_url } </p>
                 <p> Description : { this.props.detailRepo.description } </p>
-                <p> Languaje : { this.props.detailRepo.language } </p>
+                <p> Language : { this.props.detailRepo.language } </p>
                 <p> Watchers : { this.props.detailRepo.watchers } </p>
                 <p> Contributors : { this.props.detailRepo.contributors_list.length } </p>
                 <ListGroup className="contributorsList">
@@ -59,7 +59,7 @@ class MainView extends Component {
 
           { !this.props.detailRepo && this.props.repos.length > 0 &&
             <div className="reposCharts">
-              <LanguajeChart repos={this.props.repos} />
+              <LanguageChart repos={this.props.repos} />
               <ForksVsWatchersChart repos={this.props.repos} />
             </div>
           }
